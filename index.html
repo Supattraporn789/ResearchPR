@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การประยุกต์ใช้เทคโนโลยี IoT ในตู้เลี้ยงจิ้งหรีดอัตโนมัติ | งานวิจัย มรภ.บุรีรัมย์</title>
+    
+    <!-- Google Fonts: Prompt -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#16a34a', // Green-600
+                        secondary: '#047857', // Emerald-700
+                        accent: '#f59e0b', // Amber-500
+                        dark: '#1f2937',
+                        light: '#f9fafb'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .hero-pattern {
+            background-color: #f0fdf4;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-gray-50">
+
+    <!-- Header / Nav -->
+    <header class="fixed w-full top-0 z-50 glass-panel border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">IoT</div>
+                    <span class="font-bold text-xl text-dark hidden md:block">นวัตกรรมเกษตรอัจฉริยะ</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#abstract" class="text-gray-600 hover:text-primary font-medium transition-colors">ภาพรวม</a>
+                    <a href="#methodology" class="text-gray-600 hover:text-primary font-medium transition-colors">วิธีการวิจัย</a>
+                    <a href="#results" class="text-gray-600 hover:text-primary font-medium transition-colors">ผลการวิจัย</a>
+                    <a href="#team" class="text-gray-600 hover:text-primary font-medium transition-colors">คณะผู้วิจัย</a>
+                </nav>
+                <div>
+                    <a href="#full-paper" class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg">อ่านงานวิจัย</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-28 hero-pattern overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="z-10">
+                    <span class="inline-block py-1 px-3 rounded-full bg-green-100 text-primary font-semibold text-sm mb-4 border border-green-200">ปี พ.ศ. 2568 • มหาวิทยาลัยราชภัฏบุรีรัมย์</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-6">
+                        การประยุกต์ใช้เทคโนโลยี <span class="text-primary">IoT</span> <br/>
+                        <span class="text-3xl md:text-4xl lg:text-5xl text-gray-700">ในการพัฒนาตู้เลี้ยงจิ้งหรีดอัตโนมัติ</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed">
+                        ควบคุมอุณหภูมิและความชื้นให้อยู่ในช่วงที่เหมาะสม (25–35 °C) ได้อย่างอัตโนมัติ ลดภาระแรงงานและเวลาในการดูแลฟาร์มจิ้งหรีด สำหรับกลุ่มเกษตรกร ชุมชนบ้านหนองใหญ่ จ.บุรีรัมย์
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#abstract" class="bg-primary hover:bg-secondary text-white text-center px-8 py-3.5 rounded-full font-medium transition-all shadow-lg hover:shadow-xl text-lg">ศึกษาภาพรวม</a>
+                        <a href="#team" class="bg-white border-2 border-primary text-primary hover:bg-green-50 text-center px-8 py-3.5 rounded-full font-medium transition-all text-lg">รู้จักผู้วิจัย</a>
+                    </div>
+                </div>
+                <div class="relative z-10 lg:ml-10">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-3xl transform rotate-3 scale-105"></div>
+                    <img src="images/results/image1.jpeg" alt="ตู้เลี้ยงจิ้งหรีดอัตโนมัติ" class="relative rounded-3xl shadow-2xl object-cover w-full h-[400px] border-4 border-white">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
+                        <div class="bg-green-100 p-3 rounded-full text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">ลดเวลาดูแลฟาร์ม</p>
+                            <p class="text-lg font-bold text-gray-800">อัตโนมัติ 24 ชม.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Abstract Section -->
+    <section id="abstract" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">ภาพรวมงานวิจัย (Abstract)</h2>
+                <div class="w-24 h-1.5 bg-primary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-50 rounded-2xl p-8 md:p-12 shadow-inner border border-gray-100">
+                    <p class="text-lg text-gray-700 leading-loose mb-6">
+                        งานวิจัยนี้มีวัตถุประสงค์เพื่อ 1) สร้างองค์ความรู้เกี่ยวกับการประยุกต์ใช้เทคโนโลยี IoT ในการควบคุมสภาพแวดล้อมของการเลี้ยงจิ้งหรีด 2) ออกแบบและพัฒนาตู้เลี้ยงจิ้งหรีดอัตโนมัติที่สามารถควบคุมอุณหภูมิและความชื้นได้อย่างเหมาะสม 3) ถ่ายทอดเทคโนโลยีและองค์ความรู้ให้กับกลุ่มเกษตรกรในชุมชน และ 4) ประเมินประสิทธิภาพและความพึงพอใจต่อระบบที่พัฒนา 
+                    </p>
+                    <p class="text-lg text-gray-700 leading-loose">
+                        การวิจัยเป็นแบบ วิจัยและพัฒนา (R&D) ใช้แนวทาง การวิจัยเชิงปฏิบัติการแบบมีส่วนร่วม (PAR) ดำเนินการในพื้นที่บ้านหนองกับ ตำบลหนองใหญ่ อำเภอสตึก จังหวัดบุรีรัมย์ โดยใช้บอร์ด NodeMCU ESP8266 เชื่อมต่อกับเซนเซอร์ DHT11 เพื่อวัดอุณหภูมิและความชื้นภายในตู้เลี้ยง พร้อมควบคุมอุปกรณ์พัดลมและหลอดไฟอินฟราเรดผ่านโมดูลรีเลย์ ระบบสามารถเชื่อมต่ออินเทอร์เน็ตและแสดงผลแบบเรียลไทม์ผ่านแอปพลิเคชัน Blynk บนสมาร์ตโฟน
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section id="methodology" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="images/results/image4.jpeg" alt="NodeMCU ESP8266" class="rounded-2xl shadow-md w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                        <img src="images/results/image2.jpeg" alt="DHT11 Sensor" class="rounded-2xl shadow-md w-full h-48 object-cover hover:scale-105 transition-transform duration-300 mt-8">
+                        <img src="images/results/image7.jpeg" alt="Blynk Application" class="rounded-2xl shadow-md w-full h-48 object-cover hover:scale-105 transition-transform duration-300 col-span-2">
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">วิธีดำเนินการวิจัย (Methodology)</h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        ระบบตู้เลี้ยงจิ้งหรีดอัตโนมัติถูกออกแบบมาเพื่อควบคุมสภาพแวดล้อมให้เหมาะสมที่สุดสำหรับการเจริญเติบโตของจิ้งหรีด โดยใช้หลักการทำงานของ IoT (Internet of Things)
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">หน่วยประมวลผลกลาง (NodeMCU ESP8266)</h3>
+                                <p class="text-gray-600">ทำหน้าที่เป็นสมองกลของระบบ รับข้อมูลอุณหภูมิและความชื้น เชื่อมต่ออินเทอร์เน็ตผ่าน WiFi และสั่งการโมดูลรีเลย์</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">การตรวจวัดและควบคุม (Sensors & Actuators)</h3>
+                                <p class="text-gray-600">ใช้เซนเซอร์ DHT11 จำนวน 2 ตัว ติดตั้งคนละจุดเพื่อความแม่นยำ สั่งการพัดลมเพื่อระบายความร้อน และหลอดไฟอินฟราเรดเพื่อเพิ่มอุณหภูมิ</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">การติดตามผลแบบเรียลไทม์ (Blynk App)</h3>
+                                <p class="text-gray-600">ข้อมูลจะถูกส่งไปยัง Blynk Server แสดงผลผ่านแอปพลิเคชันบนสมาร์ตโฟน พร้อมระบบแจ้งเตือนเมื่อเกิดสภาวะผิดปกติ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Results Section -->
+    <section id="results" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">ผลการวิจัย (Key Results)</h2>
+                <div class="w-24 h-1.5 bg-primary mx-auto rounded-full mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">ผลการทดลองและการนำไปใช้จริงในชุมชน แสดงให้เห็นถึงประสิทธิภาพของตู้เลี้ยงจิ้งหรีดอัจฉริยะ</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Result Card 1 -->
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-green-50 flex items-center justify-center overflow-hidden">
+                        <img src="images/results/image6.jpeg" alt="Graph Result" class="w-full h-full object-cover opacity-80 mix-blend-multiply">
+                    </div>
+                    <div class="p-8 relative">
+                        <div class="absolute -top-10 right-8 w-20 h-20 bg-white rounded-full shadow-md flex items-center justify-center border-4 border-green-50">
+                            <span class="text-2xl font-bold text-primary">25-35°C</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 mt-4">การควบคุมสภาพแวดล้อม</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            ระบบสามารถควบคุมอุณหภูมิและความชื้นให้อยู่ในช่วงที่เหมาะสม (25–35 องศาเซลเซียส) ได้อย่างอัตโนมัติ ลดภาระแรงงานและเวลา
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Result Card 2 -->
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-blue-50 flex items-center justify-center overflow-hidden">
+                        <img src="images/results/image18.jpeg" alt="System Testing" class="w-full h-full object-cover opacity-80 mix-blend-multiply">
+                    </div>
+                    <div class="p-8 relative">
+                        <div class="absolute -top-10 right-8 w-20 h-20 bg-white rounded-full shadow-md flex items-center justify-center border-4 border-blue-50">
+                            <span class="text-2xl font-bold text-blue-600">4.47</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 mt-4">ประสิทธิภาพระบบ</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            ผลการประเมินโดยผู้เชี่ยวชาญ 3 ท่าน พบว่าระบบมีประสิทธิภาพโดยรวมอยู่ในระดับ <b>ดี</b> (x̄ = 4.47, S.D. = 0.54)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Result Card 3 -->
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-amber-50 flex items-center justify-center overflow-hidden">
+                        <img src="images/results/image17.jpeg" alt="Farmer Feedback" class="w-full h-full object-cover opacity-80 mix-blend-multiply">
+                    </div>
+                    <div class="p-8 relative">
+                        <div class="absolute -top-10 right-8 w-20 h-20 bg-white rounded-full shadow-md flex items-center justify-center border-4 border-amber-50">
+                            <span class="text-2xl font-bold text-amber-500">4.49</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 mt-4">ความพึงพอใจเกษตรกร</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            เกษตรกร 50 คนที่เข้าร่วมมีความพึงพอใจต่อระบบในระดับ <b>ดี</b> (x̄ = 4.49, S.D. = 0.49) สะดวกต่อการใช้งานและขยายผลได้จริง
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Researcher Profile Section -->
+    <section id="team" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">คณะผู้วิจัย (Researchers)</h2>
+                <div class="w-24 h-1.5 bg-primary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Researcher 1: Prem -->
+                <div class="bg-gray-800 rounded-3xl p-8 text-center border border-gray-700 hover:border-primary transition-colors">
+                    <div class="w-32 h-32 mx-auto rounded-full border-4 border-gray-600 overflow-hidden mb-6">
+                        <img src="images/profiles/prem/image3.jpeg" alt="ผศ.ดร.เปรม อิงคเวชชากุล" class="w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">ผศ.ดร.เปรม อิงคเวชชากุล</h3>
+                    <p class="text-primary font-medium mb-4">หัวหน้าโครงการวิจัย</p>
+                    <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                        วิทยาศาสตรดุษฎีบัณฑิต สาขาวิชาเทคโนโลยีสารสนเทศ<br/>
+                        สาขาวิชาเทคโนโลยีสารสนเทศ คณะวิทยาศาสตร์
+                    </p>
+                    <a href="mailto:prem.ev@bru.ac.th" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 hover:bg-primary transition-colors text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Researcher 2: Korakot -->
+                <div class="bg-gray-800 rounded-3xl p-8 text-center border border-gray-700 hover:border-primary transition-colors">
+                    <div class="w-32 h-32 mx-auto rounded-full border-4 border-gray-600 overflow-hidden mb-6">
+                        <img src="images/profiles/korakot/image1.png" alt="ดร.กรกช ศิลปกอบ" class="w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">ดร.กรกช ศิลปกอบ</h3>
+                    <p class="text-primary font-medium mb-4">ผู้วิจัยร่วม</p>
+                    <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                        ปรัชญาดุษฎีบัณฑิต สาขาวิชาสถิติประยุกต์<br/>
+                        กลุ่มวิชาทดสอบและวิจัยการศึกษา คณะครุศาสตร์
+                    </p>
+                    <a href="mailto:korakoch.sk@bru.ac.th" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 hover:bg-primary transition-colors text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Researcher 3: Kittikoon -->
+                <div class="bg-gray-800 rounded-3xl p-8 text-center border border-gray-700 hover:border-primary transition-colors">
+                    <div class="w-32 h-32 mx-auto rounded-full border-4 border-gray-600 overflow-hidden mb-6 bg-gray-700">
+                        <!-- Placeholder avatar since no image was extracted -->
+                        <img src="https://ui-avatars.com/api/?name=Kittikoon+Boonkate&background=047857&color=fff&size=256" alt="อ.กิตติคุณ บุญเกตุ" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">อ.กิตติคุณ บุญเกตุ</h3>
+                    <p class="text-primary font-medium mb-4">ผู้วิจัยร่วม</p>
+                    <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                        วิทยาศาสตรมหาบัณฑิต สาขาวิชาสถิติประยุกต์<br/>
+                        รองคณบดีฝ่ายพัฒนานักศึกษา คณะวิทยาศาสตร์
+                    </p>
+                    <a href="mailto:kittikoon.bk@bru.ac.th" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 hover:bg-primary transition-colors text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center gap-3 justify-center md:justify-start mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">IoT</div>
+                        <span class="font-bold text-xl text-white">นวัตกรรมเกษตรอัจฉริยะ</span>
+                    </div>
+                    <p class="text-gray-400 max-w-md">การประยุกต์ใช้เทคโนโลยีอินเทอร์เน็ตของสรรพสิ่ง ในการพัฒนาตู้เลี้ยงจิ้งหรีดอัตโนมัติ สำหรับกลุ่มเกษตรกร ชุมชนบ้านหนองใหญ่</p>
+                </div>
+                
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800 max-w-sm w-full">
+                    <p class="text-sm text-gray-300 flex items-start gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>งานวิจัยนี้ได้รับการสนับสนุนจากสำนักงานคณะกรรมการส่งเสริมวิทยาศาสตร์ วิจัยและนวัตกรรม (สกสว.) ปี พ.ศ. 2568</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+                <p>&copy; ลิขสิทธ์ของมหาวิทยาลัยราชภัฏบุรีรัมย์ พ.ศ. 2568</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-primary transition-colors">มหาวิทยาลัยราชภัฏบุรีรัมย์</a>
+                    <a href="#" class="hover:text-primary transition-colors">คณะวิทยาศาสตร์</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
